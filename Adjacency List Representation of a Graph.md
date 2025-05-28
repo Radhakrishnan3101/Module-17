@@ -1,4 +1,4 @@
-# Ex. No: 17E - Adjacency List Representation of a Graph
+# Ex. No: 11(A) - Adjacency List Representation of a Graph
 
 ## AIM:
 To write a Python program to demonstrate the **adjacency list representation** of the given graph.
@@ -37,12 +37,74 @@ To write a Python program to demonstrate the **adjacency list representation** o
 ## PYTHON PROGRAM
 
 ```
-ENTER YOUR CODE HERE
+class AdjNode:
+	def __init__(self, data):
+		self.vertex = data
+		self.next = None
+
+
+# A class to represent a graph. A graph
+# is the list of the adjacency lists.
+# Size of the array will be the no. of the
+# vertices "V"
+class Graph:
+	def __init__(self, vertices):
+		self.V = vertices
+		self.graph = [None] * self.V
+
+	# Function to add an edge in an undirected graph
+	def add_edge(self, src, dest):
+		# Adding the node to the source node
+		node = AdjNode(dest)
+		node.next = self.graph[src]
+		self.graph[src] = node
+
+		# Adding the source node to the destination as
+		# it is the undirected graph
+		node = AdjNode(src)
+		node.next = self.graph[dest]
+		self.graph[dest] = node
+
+	
+	def print_graph(self):
+	    for i in range(V):
+	        print(f"Adjacency list of vertex {i}\n head",end=" ")
+	        temp=self.graph[i]
+	        while temp:
+	            print(f"-> {temp.vertex}",end=" ")
+	            temp=temp.next
+	        print("\n")
+	            
+		
+		
+		#Write Code here
+
+
+
+
+
+# Driver program to the above graph class
+if __name__ == "__main__":
+	V = 5
+	graph = Graph(V)
+	graph.add_edge(0, 1)
+	graph.add_edge(0, 4)
+	graph.add_edge(1, 2)
+	graph.add_edge(1, 3)
+	graph.add_edge(1, 4)
+	graph.add_edge(2, 3)
+	graph.add_edge(3, 4)
+
+	graph.print_graph()
+
+
 ```
 
 ## OUTPUT
-```
-```
+
+![image](https://github.com/user-attachments/assets/c8bb2248-4698-4455-9820-8c8d3e0b2526)
+
 
 ## RESULT
 
+Thus the python program was initialised and executed successfully.
